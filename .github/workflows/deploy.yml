@@ -1,0 +1,57 @@
+
+name: Deploy NUTZO STORE
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: تحميل الملفات
+        uses: actions/checkout@v4
+
+      - name: تجهيز Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: تثبيت المكتبات
+        run: npm install
+
+      - name: بناء المتجر
+        run: npm run build
+
+      - name: تجهيز صفحات GitHub
+        uses: actions/configure-pages@v5
+
+      - name: رفع ملفات المتجر
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: نشر المتجر
+        id: deployment
+        uses: actions/deploy-pages@v4
