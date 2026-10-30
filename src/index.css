@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0f0500;
+    color: #fff7ed;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbar in warm orange theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #190900;
+}
+::-webkit-scrollbar-thumb {
+  background: #c2410c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+
+/* Glassmorphic orange card effect */
+.glass-orange {
+  background: rgba(36, 12, 2, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(251, 146, 60, 0.18);
+}
+
+.glass-orange-solid {
+  background: rgba(28, 10, 2, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(251, 146, 60, 0.25);
+}
+
+.glass-orange-light {
+  background: rgba(249, 115, 22, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(251, 146, 60, 0.15);
+}
+
+/* Floating animation for decorative geometric squares */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(16px) rotate(-8deg);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 12s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 15s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 6s ease-in-out infinite;
+}

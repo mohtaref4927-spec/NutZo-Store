@@ -1,0 +1,6 @@
+{
+  "name": "NUTZO STORE - متجر نوتزو",
+  "description": "المتجر الإلكتروني الفاخر NUTZO STORE للمنتجات والأدوات والاشتراكات مع نظام إدارة متكامل وخادم دائم.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
